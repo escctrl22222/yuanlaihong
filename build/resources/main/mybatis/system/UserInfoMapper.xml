@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfoMapper">
+    
+    <resultMap id="userInfoResultMap" type="UserInfo">
+        <id column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="rights" property="rights"/>
+        <result column="login_status" property="loginStatus"/>
+        <result column="skin" property="skin"/>
+        <result column="signature" property="signature"/>
+        <result column="last_login_date" property="lastLoginDate"/>
+        <result column="last_login_ip" property="lastLoginIp"/>
+        <result column="profile_photo" property="profilePhoto"/>
+    </resultMap>
+    
+    <sql id="tableName">
+        user_info
+    </sql>
+
+    <sql id="field">
+        user_id,
+        name,
+        rights,
+        login_status,
+        skin,
+        signature,
+        last_login_date,
+        last_login_ip,
+        profile_photo
+    </sql>
+
+    <sql id="fieldValue">
+        #{userId},
+        #{name},
+        #{rights},
+        #{loginStatus},
+        #{skin},
+        #{signature},
+        #{lastLoginDate},
+        #{lastLoginIp},
+        #{profilePhoto}
+    </sql>
+
+    <!-- 更新用户登录状态 -->
+    <update id="updateUserLoginStatus" parameterType="UserInfo">
+        update
+            <include refid="tableName"></include>
+        set
+            login_status = #{loginStatus}
+        where
+            user_id = #{userId}
+    </update>
+
+    <!-- 查找用户详细信息 -->
+    <select id="selectUserInfo" parameterType="UserInfo" resultMap="userInfoResultMap">
+        select
+            <include refid="field"></include>
+        from
+            <include refid="tableName"></include>
+        where
+            user_id = #{userId}
+    </select>
+
+    <!-- 更新用户详细信息 -->
+    <update id="updateUserInfo" parameterType="UserInfo">
+        update
+            <include refid="tableName"></include>
+        set
+            name = #{name},
+            profile_photo = #{profilePhoto}
+        where
+            user_id = #{userId}
+    </update>
+</mapper>

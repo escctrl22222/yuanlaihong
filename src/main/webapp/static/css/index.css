@@ -1,0 +1,38 @@
+
+/* 关注我 */
+.follow_me_link ul { width: 100%; margin: 30px 0; overflow: hidden }
+.follow_me_link li { width: 52px; margin: 0 18px 0 5px; float: left; }
+.follow_me_link li a { color: #747F8C; width: 52px; text-align: center; padding-top: 60px; float: left; }
+.follow_me_link .github { background: url(../images/github.jpg) no-repeat scroll 0% 0% transparent; }
+.follow_me_link .github:hover { color: #000; background: url(../images/github.jpg) no-repeat scroll 0% 0% transparent; }
+
+/* 设定轮播图大小 */
+#myCarousel .carousel-inner .item > img {
+    display: block;
+    width:100%;
+    height:400px;
+}
+
+#header_nav .header_nav_a {
+    display: inline-block;
+    font-size: 17px;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.7); /* 仅调节背景的色彩，并加上不透明度，此例为70%不透明的白色 */
+    color: #0000FF;/* 设置文字颜色 */
+    border: 0;/* 设置边框大小，此处为设置为无边框 */
+}
+
+#header_nav .header_nav_a:hover{
+    background: rgba(66, 126, 11, 0.7); /* 鼠标移动上去后变色 */
+}
+
+/*.dxhl-footer {*/
+/*    background: rgba(22, 22, 22, 0.7); !* 鼠标移动上去后变色 *!*/
+/*}*/
+
+.dxhl-footer p{
+    background: rgba(22, 22, 22, 0.7);
+    color: #ffffff;
+    text-align:center;
+}

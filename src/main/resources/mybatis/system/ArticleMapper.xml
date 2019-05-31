@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ArticleMapper">
+
+    <!-- 返回结果集 -->
+    <!-- column：表中的列名 property:JAVA类中的列名 -->
+    <resultMap id="articleResultMap" type="Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="url" property="url"/>
+        <result column="icon" property="icon"/>
+        <result column="summary" property="summary"/>
+        <result column="author" property="author"/>
+        <result column="create_date" property="createDate"/>
+        <result column="comment" property="comment"/>
+        <result column="browse" property="browse"/>
+    </resultMap>
+
+    <!-- 表名 -->
+    <sql id="tableName">
+        article
+    </sql>
+
+    <!-- 字段DB -->
+    <sql id="field">
+        id,
+        title,
+        url,
+        icon,
+        summary,
+        author,
+        create_date,
+        comment,
+        browse
+    </sql>
+
+    <!-- 字段值 -->
+    <sql id="fieldValue">
+        #{id},
+        #{title},
+        #{url},
+        #{icon},
+        #{summary},
+        #{author},
+        #{createDate},
+        #{comment},
+        #{browse}
+    </sql>
+
+    <!-- 查询文章 -->
+    <!-- parameterType:输入参数 #{userName}映射元为Article -->
+    <!-- resultMap:输出参数 可更改输出的项目名 -->
+    <select id="selectArticle" parameterType="Article" resultMap="articleResultMap">
+        select
+        <include refid="field"></include>
+        from
+        <include refid="tableName"></include>
+    </select>
+</mapper>

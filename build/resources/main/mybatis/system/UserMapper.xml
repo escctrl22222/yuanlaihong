@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <!-- 返回结果集 -->
+    <!-- column：表中的列名 property:JAVA类中的列名 -->
+    <resultMap id="userResultMap" type="User">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="reg_date" property="regDate"/>
+        <result column="del_date" property="delDate"/>
+        <result column="del_flg" property="delFlg"/>
+    </resultMap>
+
+    <!-- 表名 -->
+    <sql id="tableName">
+        user
+    </sql>
+
+    <!-- 字段DB -->
+    <sql id="field">
+        user_id,
+        user_name,
+        password,
+        email,
+        reg_date,
+        del_date,
+        del_flg
+    </sql>
+
+    <!-- 字段值 -->
+    <sql id="fieldValue">
+        #{userId},
+        #{userName},
+        #{password},
+        #{email},
+        #{regDate},
+        #{delDate},
+        #{delFlg}
+    </sql>
+    
+    <!-- 新用户注册 -->
+    <insert id="insertUser" parameterType="User">
+        insert into
+            <include refid="tableName"></include>
+        (
+            <include refid="field"></include>
+        )
+        values (
+            <include refid="fieldValue"></include>
+        )
+    </insert>
+
+    <!-- 查询用户 -->
+    <!-- parameterType:输入参数 #{userName}映射元为User -->
+    <!-- resultMap:输出参数 可更改输出的项目名 -->
+    <select id="selectUser" parameterType="User" resultMap="userResultMap">
+        select
+            <include refid="field"></include>
+        from
+            <include refid="tableName"></include>
+        where
+            user_name = #{userName}
+    </select>
+
+    <!-- 查询邮箱 -->
+    <select id="selectEmail" parameterType="User" resultMap="userResultMap">
+        select
+            <include refid="field"></include>
+        from
+            <include refid="tableName"></include>
+        where
+            email = #{email}
+    </select>
+
+    <!-- 验证密码 -->
+    <select id="selectUserPassword" parameterType="User" resultMap="userResultMap">
+        select
+            <include refid="field"></include>
+        from
+            <include refid="tableName"></include>
+        where
+                user_name = #{userName}
+            and password = #{password}
+    </select>
+</mapper>

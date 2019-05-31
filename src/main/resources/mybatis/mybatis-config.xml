@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 调整设置 -->
+    <settings>
+        <setting name="cacheEnabled" value="true" /><!-- 全局映射器启用缓存 -->
+        <setting name="useGeneratedKeys" value="true" /> <!-- 强制使用自动生成主键 -->
+        <setting name="defaultExecutorType" value="REUSE" /> <!-- 强制使用自动生成主键 -->
+        
+        <!-- DEBUG -->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>&lt;!&ndash; 控制台中查看生成的SQL语句 &ndash;&gt;-->
+    </settings>
+
+    <!-- 类型别名 -->
+    <typeAliases>
+        <typeAlias type="com.my.domain.User" alias="User"></typeAlias>
+        <typeAlias type="com.my.domain.UserInfo" alias="UserInfo"></typeAlias>
+        <typeAlias type="com.my.domain.Article" alias="Article"></typeAlias>
+    </typeAliases>
+</configuration>
